@@ -16,4 +16,5 @@ Route::get('/', function () {
 })->name('start');
 Route::get('/captain/{captain_slug}','CaptainController@show');
 Route::get('/captain','CaptainController@index');
+Route::post('/assign/{captain_slug}','CaptainController@assign');
 Auth::routes();

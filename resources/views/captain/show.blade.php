@@ -17,8 +17,9 @@
 
         <div class="service">
             <h2>In service</h2>
-            From {{ date('g:i A', strtotime($captain->serves_from)) }} to {{ date('g:i A', strtotime($captain->serves_until)) }}.
-
+            
+            From{{date('g:i A', strtotime($captain->serves_from)) }} to {{ date('g:i A', strtotime($captain->serves_until)) }}.
+            
             <div class="status unavailable">Current status: <span>Not in service</span></div>
         </div>
 
@@ -27,8 +28,8 @@
     <section class="captain-assign">
         <h2>Assign a captain</h2>
 
-        <form action="" method="post">
-
+        <form action="{{action('CaptainController@assign',$captain->id)}}" method="post">
+            @csrf
             <input type="text" name="subject" placeholder="Cause for assignment">
 
             <textarea name="description" placeholder="Thorough description"></textarea>

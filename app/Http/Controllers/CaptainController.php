@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Captain;
+use App\Assignment;
 class CaptainController extends Controller
 {
     //
@@ -23,5 +24,15 @@ class CaptainController extends Controller
     {
         $captains=Captain::orderBy('name','asc')->get();
         return view('captain/index',compact('captains'));
+    }
+    public function assign(Request $request,$captain_id)
+    {   
+        
+        $assign=new Assignment;
+        $assign->captain_id=$captain_id;
+        $assign->user_id=\Auth::user()->id;
+
+        return($request);
+        return redirect('/captains');
     }
 }
