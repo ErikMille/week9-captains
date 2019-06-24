@@ -31,8 +31,9 @@ class CaptainController extends Controller
         $assign=new Assignment;
         $assign->captain_id=$captain_id;
         $assign->user_id=\Auth::user()->id;
-
-        return($request);
-        return redirect('/captains');
+        $assign->subject=$request->subject;
+        $assign->description=$request->description;
+        $assign->save();
+        return redirect('/captain');
     }
 }
