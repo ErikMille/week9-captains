@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Captain;
 class CaptainController extends Controller
 {
     //
@@ -18,5 +18,10 @@ class CaptainController extends Controller
         $view = view('captain/show');
         $view->captain = $captain;
         return $view;
+    }
+    public function index()
+    {
+        $captains=Captain::orderBy('name','asc')->get();
+        return view('captain/index',compact('captains'));
     }
 }
